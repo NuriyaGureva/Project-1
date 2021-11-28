@@ -163,6 +163,7 @@ void main()
 #ifdef  ASSIGNMENT_CHECK	
 
 	Point A, B, C;	
+
 	A = Point(2, 3);
 	A.print();	
 
@@ -170,8 +171,13 @@ void main()
 	B.print();	
 
 	C = Point(2, 3);	
-	C.print();
+	C.print();	
+
+	Point G;
+	G = C;
+	G.print();
 
 #endif  ASSIGNMENT_CHECK
 
 } 
+
