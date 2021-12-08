@@ -52,21 +52,34 @@ public:
 	   this->y = other.y;
 	   cout << "CopyConstructor:" << this << endl;
    }
- //           Optranors:
-   void operator =(const Point& other)
-   {
-	   this->x = other.x;
-	   this->y = other.y;
-	   cout << "CopyAssignment:\t" << this << endl;
-   } 
-
    ~Point()
    {
 	   cout << "Destructor:\t" << this << endl;
    }
+ //           Optranors:
+   Point& operator =(const Point& other)
+   {
+	   this->x = other.x;
+	   this->y = other.y;
+	   cout << "CopyAssignment:\t" << this << endl;
+	   return *this;
+   } 
+   Point& operator++()//Prefix increment
+   {
+	   this->x++;
+	   this->y++;
+	   return *this;// Возвращаем измененное значение
+   }
+   Point operator++(int)//Postfix increment
+   {
+	   Point old = *this;//Сохраняем старое значение
+	   x++;
+	   y++;
+	   return old;//Старое(не измененное) значение объекта
+   }
    //        Methods:
 
-   double distance(Point other)
+   double distance(const Point& other)const
 	   {
 	   double x_distance = this->x - other.x;
 	   double y_distance = this->y - other.y;
@@ -79,11 +92,19 @@ public:
    }
 
 };
-double distance(Point A, Point B)
+
+double distance(const Point& A, const Point& B)
 {
 	double x_distance = A.get_x() - B.get_x();
 	double y_distance = A.get_y() - B.get_y();
 	return sqrt(x_distance * x_distance + y_distance * y_distance);
+}
+Point operator+(const Point& left, const Point& right)
+{
+	Point result;
+	result.set_x(left.get_x() + right.get_x());
+	result.set_y(left.get_y() + right.get_y());
+	return result;
 }
 
 //Point G;    //Global object;
@@ -91,8 +112,8 @@ int g;       //  Global  variable;
 
 //#define STRUCT_POINT
 //#define CONSTRUCTOR_CHECK
-// #define DISTANCE_CHECK
-#define ASSIGNMENT_CHECK
+ //#define DISTANCE_CHECK
+//#define ASSIGNMENT_CHECK
 
 
 void main()
@@ -120,8 +141,7 @@ void main()
 	/*A.set_x(2);
 	A.set_y(3);*/
 	//cout << A.get_x() << "\t" << A.get_y() << endl;
-	A.print();
-	
+	A.print();	
 
 	Point B(4, 5);
 	B.print();
@@ -145,39 +165,48 @@ void main()
 	Point G;  //Default constructor
 	G = F;   //CopyAssignment (operator=)
 	G.print();
-
 #endif 
 
 #ifdef DISTANCE-CHECK
 	Point A(2, 3);
 	Point B(3, 4);
+	cout << "\n---------------------------\n";
 	cout << "Расстояние от точки А до точки В: " << A.distance(B) << endl;
+	cout << "\n---------------------------\n";
 	cout << "Расстояние от точки B до точки A: " << B.distance(A) << endl;
-
+	cout << "\n---------------------------\n";
 	cout << "Расстояние между точками А до точки В: " << distance(A, B) << endl;
+	cout << "\n---------------------------\n";
 	cout << "Расстояние между точками B до точки A: " << distance(B, A) << endl;
-#endif // DISTANCE-CHECK
-
-
+	cout << "\n---------------------------\n";
+#endif //DISTANCE-CHECK
 
 #ifdef  ASSIGNMENT_CHECK	
-
-	Point A, B, C;	
-
-	A = Point(2, 3);
-	A.print();	
-
-	B = Point(2, 3);
-	B.print();	
-
-	C = Point(2, 3);	
-	C.print();	
-
-	Point G;
-	G = C;
-	G.print();
+	int a, b, c;
+	a = b = c = 0;
+	cout << a << tab << b << tab << endl;
+	//Point(2,3);явно вызываем конструктор,который создает временны безымянный объект
+;	Point A, B, C;	
+	cout << "\n---------------------------\n";
+	A = C = B = Point(2,3);
+	cout << "\n---------------------------\n";
+	A.print();
+	B.print();
+	C.print();
 
 #endif  ASSIGNMENT_CHECK
+
+	int a = 2;
+	int b = 3;
+	int c = a + b;
+
+	Point A(2, 3);
+	Point B(4, 5);
+	Point C = A + B;
+	C.print();
+	C++;
+	C.print();
+
 
 } 
 
