@@ -135,13 +135,8 @@ public:
 		return integer;
 	}
 	explicit operator double()const
-	{		
-		double i = integer;
-		double n = numerator;
-		double d = denominator;
-
-		return ((i * d + n) *100)
-			/ (d *100);
+	{					
+		return integer + (double)numerator / denominator;			
 	}
 		
 	
