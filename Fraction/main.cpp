@@ -143,7 +143,7 @@ public:
 		return ((i * d + n) *100)
 			/ (d *100);
 	}
-	explicit operator Fraction()const{}	
+		
 	
 
 	//        Methods:
