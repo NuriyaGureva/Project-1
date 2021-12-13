@@ -208,19 +208,22 @@ public:
 	}	
 	
 	friend std::ostream& operator<< (std::ostream& os, const Fraction& obj);
-	friend std::istream& operator>> (std::istream& in, Fraction& obj);
+	friend std::istream& operator>> (std::istream& is, Fraction& obj);
 };
-std::ostream& operator<<(std::ostream& os, const Fraction& obj)
-{
-	os << "Fraction: " << obj.numerator << "/" << obj.denominator << "\n";
-	return os;
+
+
+std::ostream& operator<<(std::ostream& os, const Fraction& obj)	
+{			  	
+	return os << "Fraction: " << obj.numerator << "/" 
+		      << obj.denominator << endl;
+	    
 }
 
-std::istream& operator>>(std::istream& in, Fraction& obj)
-{
-	in >> obj.numerator;	
-	in >> obj.denominator;	
-	return in;
+std::istream& operator>>(std::istream& is, Fraction& obj)
+{	
+	is >> obj.numerator;	
+	is >> obj.denominator;	
+	return is;
 }
 
 Fraction operator*(Fraction left, Fraction right)
