@@ -61,7 +61,7 @@ public:
 		
 };  
 
-	 std::ostream& operator<<(std::ostream& os, const String& str1)
+	 std::ostream& operator<<(std::ostream& os, const String& str)
 	 {		
 		 return os;
 	 }    
@@ -71,22 +71,21 @@ public:
 	std::string str2 = "World!";
 	std::string str3 = str1 + str2 ;
 	std::string str4; 
-	
 
 
 int main()
 {   
 	setlocale(LC_ALL, "Russian");
 
-	String str;	
+	String str("80");
     String str1 = "Hello";
 	String str2 = "World";
-	String str4;	
+	String str4("25");
 	//String str3 = str1 + str2;
-	std::cout << str << endl;
+	std::cout << "str: " << endl;
 	std::cout << "str1: " << "Hello," << endl;
 	std::cout << "str2: " << "Word!" << endl;
 	std::cout << str3 << endl;
-	std::cout << str4 << endl;
+	std::cout << "str4: " << endl;
 }
 
