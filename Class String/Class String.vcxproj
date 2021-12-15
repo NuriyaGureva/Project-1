@@ -21,8 +21,8 @@
   <PropertyGroup Label="Globals">
     <VCProjectVersion>16.0</VCProjectVersion>
     <Keyword>Win32Proj</Keyword>
-    <ProjectGuid>{98cb45dd-71f5-4fb7-b787-e84528c82edc}</ProjectGuid>
-    <RootNamespace>Fraction</RootNamespace>
+    <ProjectGuid>{5ada93c4-ecb5-44a2-a765-ce6a2a2f3742}</ProjectGuid>
+    <RootNamespace>ClassString</RootNamespace>
     <WindowsTargetPlatformVersion>10.0</WindowsTargetPlatformVersion>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
@@ -85,7 +85,7 @@
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <ClCompile>
       <WarningLevel>Level3</WarningLevel>
-      <SDLCheck>false</SDLCheck>
+      <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>WIN32;_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
     </ClCompile>
@@ -139,7 +139,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="main.cpp" />
+    <ClCompile Include="Class String.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
